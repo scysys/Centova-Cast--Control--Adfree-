@@ -6,8 +6,6 @@ import 'package:flutter_centovacast_api/widgets/tabs/tab3.dart';
 import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:admob_flutter/admob_flutter.dart';
-import 'dart:io' show Platform;
 import 'package:flutter_centovacast_api/widgets/localisation/AppLanguage.dart';
 import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -24,8 +22,6 @@ void main() async {
   await Firebase.initializeApp();
 
   FirebaseAnalytics();
-
-  Admob.initialize();
 
   runApp(MyApp(
     appLanguage: appLanguage,
@@ -110,14 +106,4 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-}
-
-// Find the right device and show the right admob details
-String getBannerAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-7700881921681700/6198192865';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-7700881921681700/9763755555';
-  }
-  return null;
 }

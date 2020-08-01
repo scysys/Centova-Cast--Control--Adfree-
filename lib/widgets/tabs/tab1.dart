@@ -3,11 +3,7 @@ import 'package:http/http.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
 import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
-import 'package:admob_flutter/admob_flutter.dart';
-import 'dart:io' show Platform;
-import 'package:flutter_centovacast_api/widgets/localisation/AppLanguage.dart';
 import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
-import 'package:provider/provider.dart';
 
 class Tab1 extends StatefulWidget {
   @override
@@ -46,7 +42,7 @@ class _Tab1 extends State<Tab1> {
                 ),
                 onPressed: () async {
                   print("Pressed: Start Server");
-                  _StartStreamserver();
+                  _startStreamserver();
 
                   showToast(
                     AppLocalizations.of(context).translate('process_started'),
@@ -80,7 +76,7 @@ class _Tab1 extends State<Tab1> {
                 ),
                 onPressed: () async {
                   print("Pressed: Stop Server");
-                  _StopStreamserver();
+                  _stopStreamserver();
 
                   showToast(
                     AppLocalizations.of(context).translate('process_started'),
@@ -93,14 +89,6 @@ class _Tab1 extends State<Tab1> {
                 },
               ),
             ),
-            new Expanded(
-              flex: 10,
-              child: Center(
-                  child: new AdmobBanner(
-                adUnitId: getBannerAdUnitId(),
-                adSize: AdmobBannerSize.FULL_BANNER,
-              )),
-            )
           ]),
       padding: const EdgeInsets.all(0.0),
       alignment: Alignment.center,
@@ -115,7 +103,7 @@ class _Tab1 extends State<Tab1> {
  */
 
 // Start Streamserver
-_StartStreamserver() async {
+_startStreamserver() async {
   String url = '' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.start&f=json&a[username]=' +
@@ -135,7 +123,7 @@ _StartStreamserver() async {
 }
 
 // Stop Streamserver
-_StopStreamserver() async {
+_stopStreamserver() async {
   String url = '' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.stop&f=json&a[username]=' +
@@ -152,14 +140,4 @@ _StopStreamserver() async {
         description: 'Stream Server was stopped',
       ),
       duration: Duration(seconds: 5));
-}
-
-// Find the right device and show the right admob details
-String getBannerAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-7700881921681700/6198192865';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-7700881921681700/9763755555';
-  }
-  return null;
 }
