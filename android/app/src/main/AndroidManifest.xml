@@ -10,7 +10,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="Centova Cast: Control"
+        android:label="Centova Cast: Control (Pro)"
         android:icon="@mipmap/launcher_icon">
 
         <meta-data
