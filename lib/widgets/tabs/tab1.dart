@@ -1,9 +1,11 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
+import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
+import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
+import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
 import 'package:http/http.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
-import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
-import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
 
 class Tab1 extends StatefulWidget {
   @override
@@ -104,13 +106,13 @@ class _Tab1 extends State<Tab1> {
 
 // Start Streamserver
 _startStreamserver() async {
-  String url = '' +
+  final url = Uri.parse('' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.start&f=json&a[username]=' +
       StorageUtil.getString("cc_username") +
       '&a[password]=' +
       StorageUtil.getString("cc_password") +
-      '&a[noapps]=1';
+      '&a[noapps]=1');
   Response response = await get(url);
   Map<String, String> headers = response.headers;
 
@@ -124,13 +126,13 @@ _startStreamserver() async {
 
 // Stop Streamserver
 _stopStreamserver() async {
-  String url = '' +
+  final url = Uri.parse('' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.stop&f=json&a[username]=' +
       StorageUtil.getString("cc_username") +
       '&a[password]=' +
       StorageUtil.getString("cc_password") +
-      '';
+      '');
   Response response = await get(url);
   Map<String, String> headers = response.headers;
 
@@ -140,4 +142,14 @@ _stopStreamserver() async {
         description: 'Stream Server was stopped',
       ),
       duration: Duration(seconds: 5));
+}
+
+// Find the right device and show the right admob details
+String getBannerAdUnitId() {
+  if (Platform.isIOS) {
+    return 'ca-app-pub-7700881921681700/6198192865';
+  } else if (Platform.isAndroid) {
+    return 'ca-app-pub-7700881921681700/9763755555';
+  }
+  return null;
 }

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
-import 'package:launch_review/launch_review.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:launch_review/launch_review.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class NavDrawer extends StatelessWidget {
   @override
@@ -61,6 +61,21 @@ class NavDrawer extends StatelessWidget {
                 Text(AppLocalizations.of(context).translate('drawer_contact')),
             onTap: () async {
               const url = 'https://www.streampanel.net/kontakt/';
+
+              if (await canLaunch(url)) {
+                await launch(url, forceSafariVC: false);
+              } else {
+                throw 'Could not launch $url';
+              }
+            },
+          ),
+          new ListTile(
+            leading: Icon(Icons.contact_mail),
+            title: Text(
+                AppLocalizations.of(context).translate('drawer_changelog')),
+            onTap: () async {
+              const url =
+                  'https://www.streampanel.net/changelog-centovacast-control/';
 
               if (await canLaunch(url)) {
                 await launch(url, forceSafariVC: false);

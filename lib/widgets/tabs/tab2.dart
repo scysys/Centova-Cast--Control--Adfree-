@@ -1,9 +1,11 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
+import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
+import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
+import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
 import 'package:http/http.dart';
 import 'package:oktoast/oktoast.dart';
-import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
-import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
-import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
 
 class Tab2 extends StatefulWidget {
   @override
@@ -104,13 +106,13 @@ class _Tab2 extends State<Tab2> {
 
 // Start Streamserver
 _startAutoDJ() async {
-  String url = '' +
+  final url = Uri.parse('' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.switchsource&f=json&a[username]=' +
       StorageUtil.getString("cc_username") +
       '&a[password]=' +
       StorageUtil.getString("cc_password") +
-      '&a[state]=up';
+      '&a[state]=up');
   Response response = await get(url);
   Map<String, String> headers = response.headers;
 
@@ -124,13 +126,13 @@ _startAutoDJ() async {
 
 // Stop Streamserver
 _stopAutoDJ() async {
-  String url = '' +
+  final url = Uri.parse('' +
       StorageUtil.getString("cc_url") +
       '/api.php?xm=server.switchsource&f=json&a[username]=' +
       StorageUtil.getString("cc_username") +
       '&a[password]=' +
       StorageUtil.getString("cc_password") +
-      '&a[state]=down';
+      '&a[state]=down');
   Response response = await get(url);
   Map<String, String> headers = response.headers;
 
@@ -140,4 +142,14 @@ _stopAutoDJ() async {
         description: 'AutoDJ was stopped',
       ),
       duration: Duration(seconds: 5));
+}
+
+// Find the right device and show the right admob details
+String getBannerAdUnitId() {
+  if (Platform.isIOS) {
+    return 'ca-app-pub-7700881921681700/6198192865';
+  } else if (Platform.isAndroid) {
+    return 'ca-app-pub-7700881921681700/9763755555';
+  }
+  return null;
 }

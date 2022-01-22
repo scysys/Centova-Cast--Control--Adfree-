@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
-import 'package:flutter_centovacast_api/widgets/tabs/tab3_saved_message.dart';
 import 'package:flutter_centovacast_api/widgets/localisation/AppLanguage.dart';
 import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
+import 'package:flutter_centovacast_api/widgets/tabs/tab3_saved_message.dart';
 import 'package:provider/provider.dart';
 
 class Tab3 extends StatefulWidget {
@@ -103,7 +103,8 @@ class _Tab3 extends State<Tab3> {
 
                       StorageUtil.putString("cc_url", urlController.text);
                       StorageUtil.putString("cc_username", nameController.text);
-                      StorageUtil.putString("cc_password", passwordController.text);
+                      StorageUtil.putString(
+                          "cc_password", passwordController.text);
 
                       Navigator.push(
                           context,
@@ -121,8 +122,19 @@ class _Tab3 extends State<Tab3> {
                   children: <Widget>[
                     Text(
                       AppLocalizations.of(context).translate('app_language'),
-                      style: TextStyle(fontSize: 26),
+                      style: TextStyle(
+                          color: Colors.blue,
+                          fontWeight: FontWeight.w500,
+                          fontSize: 30),
                     ),
+                    Container(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                          AppLocalizations.of(context)
+                              .translate('app_language_desc'),
+                          style: TextStyle(fontSize: 20),
+                        )),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
