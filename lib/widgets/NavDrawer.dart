@@ -33,40 +33,52 @@ class NavDrawer extends StatelessWidget {
               const url =
                   'https://www.streampanel.net/faq/centova-cast-control/';
 
-              if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false);
-              } else {
+              if (!await launch(
+                url,
+                forceSafariVC: false,
+                forceWebView: false,
+                //headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
                 throw 'Could not launch $url';
               }
+
             },
           ),
           new ListTile(
             leading: Icon(Icons.supervised_user_circle),
             title:
-                Text(AppLocalizations.of(context).translate('drawer_support')),
+            Text(AppLocalizations.of(context).translate('drawer_support')),
             onTap: () async {
               const url =
                   'https://login.streampanel.net/submitticket.php?step=2&deptid=57&language=german';
 
-              if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false);
-              } else {
+              if (!await launch(
+                url,
+                forceSafariVC: false,
+                forceWebView: false,
+                //headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
                 throw 'Could not launch $url';
               }
+
             },
           ),
           new ListTile(
             leading: Icon(Icons.contact_mail),
             title:
-                Text(AppLocalizations.of(context).translate('drawer_contact')),
+            Text(AppLocalizations.of(context).translate('drawer_contact')),
             onTap: () async {
               const url = 'https://www.streampanel.net/kontakt/';
 
-              if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false);
-              } else {
+              if (!await launch(
+                url,
+                forceSafariVC: false,
+                forceWebView: false,
+                //headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
                 throw 'Could not launch $url';
               }
+
             },
           ),
           new ListTile(
@@ -77,31 +89,39 @@ class NavDrawer extends StatelessWidget {
               const url =
                   'https://www.streampanel.net/changelog-centovacast-control/';
 
-              if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false);
-              } else {
+              if (!await launch(
+                url,
+                forceSafariVC: false,
+                forceWebView: false,
+                //headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
                 throw 'Could not launch $url';
               }
+
             },
           ),
           new ListTile(
             leading: Icon(Icons.remove_red_eye),
             title:
-                Text(AppLocalizations.of(context).translate('drawer_aboutus')),
+            Text(AppLocalizations.of(context).translate('drawer_aboutus')),
             onTap: () async {
               const url = 'https://www.streampanel.net/kontakt/impressum/';
 
-              if (await canLaunch(url)) {
-                await launch(url, forceSafariVC: false);
-              } else {
+              if (!await launch(
+                url,
+                forceSafariVC: false,
+                forceWebView: false,
+                //headers: <String, String>{'my_header_key': 'my_header_value'},
+              )) {
                 throw 'Could not launch $url';
               }
+
             },
           ),
           new ListTile(
             leading: Icon(Icons.rate_review),
             title:
-                Text(AppLocalizations.of(context).translate('drawer_review')),
+            Text(AppLocalizations.of(context).translate('drawer_review')),
             onTap: () {
               LaunchReview.launch();
             },
