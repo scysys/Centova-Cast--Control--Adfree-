@@ -1,9 +1,7 @@
-import 'dart:io' show Platform;
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_centovacast_api/widgets/SharedPreferencesUtil.dart';
-import 'package:flutter_centovacast_api/widgets/ToastWidget.dart';
-import 'package:flutter_centovacast_api/widgets/localisation/AppLocalizations.dart';
+import 'package:flutter_centovacast_api_adfree/widgets/SharedPreferencesUtil.dart';
+import 'package:flutter_centovacast_api_adfree/widgets/ToastWidget.dart';
 import 'package:http/http.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -34,11 +32,8 @@ class _Tab2 extends State<Tab2> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     new Text(
-                      AppLocalizations.of(context).translate('start_autodj'),
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Roboto"),
+                      AppLocalizations.of(context)!.start_autodj,
+                      style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto"),
                     )
                   ],
                 ),
@@ -47,7 +42,7 @@ class _Tab2 extends State<Tab2> {
                   _startAutoDJ();
 
                   showToast(
-                    AppLocalizations.of(context).translate('process_started'),
+                    AppLocalizations.of(context)!.process_started,
                     duration: Duration(seconds: 1),
                     position: ToastPosition.top,
                     backgroundColor: Colors.white,
@@ -68,11 +63,8 @@ class _Tab2 extends State<Tab2> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     new Text(
-                      AppLocalizations.of(context).translate('stop_autodj'),
-                      style: new TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.w400,
-                          fontFamily: "Roboto"),
+                      AppLocalizations.of(context)!.stop_autodj,
+                      style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto"),
                     )
                   ],
                 ),
@@ -81,7 +73,7 @@ class _Tab2 extends State<Tab2> {
                   _stopAutoDJ();
 
                   showToast(
-                    AppLocalizations.of(context).translate('process_started'),
+                    AppLocalizations.of(context)!.process_started,
                     duration: Duration(seconds: 1),
                     position: ToastPosition.top,
                     backgroundColor: Colors.white,
@@ -142,14 +134,4 @@ _stopAutoDJ() async {
         description: 'AutoDJ was stopped',
       ),
       duration: Duration(seconds: 5));
-}
-
-// Find the right device and show the right admob details
-String getBannerAdUnitId() {
-  if (Platform.isIOS) {
-    return 'ca-app-pub-7700881921681700/6198192865';
-  } else if (Platform.isAndroid) {
-    return 'ca-app-pub-7700881921681700/9763755555';
-  }
-  return null;
 }
