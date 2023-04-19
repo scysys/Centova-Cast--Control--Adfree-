@@ -23,65 +23,63 @@ class _Tab1 extends State<Tab1> {
           children: <Widget>[
             new Expanded(
               flex: 45,
-              child: RaisedButton(
-                textColor: Colors.white,
-                color: Colors.greenAccent[400],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    new Text(
-                      AppLocalizations.of(context)!.start_server,
-                      style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto"),
-                    )
-                  ],
-                ),
-                onPressed: () async {
-                  print("Pressed: Start Server");
-                  _startStreamserver();
+              child: ElevatedButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      new Text(
+                        AppLocalizations.of(context)!.start_server,
+                        style: new TextStyle(
+                            fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto", color: Colors.white),
+                      )
+                    ],
+                  ),
+                  onPressed: () async {
+                    print("Pressed: Start Server");
+                    _startStreamserver();
 
-                  showToast(
-                    AppLocalizations.of(context)!.process_started,
-                    duration: Duration(seconds: 1),
-                    position: ToastPosition.top,
-                    backgroundColor: Colors.white,
-                    radius: 5.0,
-                    textStyle: TextStyle(fontSize: 16.0, color: Colors.black),
-                  );
-                },
-              ),
+                    showToast(
+                      AppLocalizations.of(context)!.process_started,
+                      duration: Duration(seconds: 1),
+                      position: ToastPosition.top,
+                      backgroundColor: Colors.white,
+                      radius: 5.0,
+                      textStyle: TextStyle(fontSize: 16.0, color: Colors.black),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent[400])),
             ),
             new Expanded(
               flex: 45,
-              child: RaisedButton(
-                textColor: Colors.white,
-                color: Colors.redAccent[400],
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    new Text(
-                      AppLocalizations.of(context)!.stop_server,
-                      style: new TextStyle(fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto"),
-                    )
-                  ],
-                ),
-                onPressed: () async {
-                  print("Pressed: Stop Server");
-                  _stopStreamserver();
+              child: ElevatedButton(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      new Text(
+                        AppLocalizations.of(context)!.stop_server,
+                        style: new TextStyle(
+                            fontSize: 30.0, fontWeight: FontWeight.w400, fontFamily: "Roboto", color: Colors.white),
+                      )
+                    ],
+                  ),
+                  onPressed: () async {
+                    print("Pressed: Stop Server");
+                    _stopStreamserver();
 
-                  showToast(
-                    AppLocalizations.of(context)!.process_started,
-                    duration: Duration(seconds: 1),
-                    position: ToastPosition.top,
-                    backgroundColor: Colors.white,
-                    radius: 5.0,
-                    textStyle: TextStyle(fontSize: 16.0, color: Colors.black),
-                  );
-                },
-              ),
+                    showToast(
+                      AppLocalizations.of(context)!.process_started,
+                      duration: Duration(seconds: 1),
+                      position: ToastPosition.top,
+                      backgroundColor: Colors.white,
+                      radius: 5.0,
+                      textStyle: TextStyle(fontSize: 16.0, color: Colors.black),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent[400])),
             ),
           ]),
       padding: const EdgeInsets.all(0.0),

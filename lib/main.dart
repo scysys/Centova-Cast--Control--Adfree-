@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
 
-      title: 'Centova Cast: Control',
+      title: 'Centova Cast: Control (Pro)',
 
       //theme: new ThemeData(primarySwatch: Colors.grey),
       themeMode: ThemeMode.dark,

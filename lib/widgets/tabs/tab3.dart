@@ -76,22 +76,25 @@ class _Tab3 extends State<Tab3> {
               Container(
                   height: 75,
                   padding: EdgeInsets.all(10),
-                  child: RaisedButton(
-                    textColor: Colors.white,
-                    color: Colors.blue,
-                    child: Text(AppLocalizations.of(context)!.save),
-                    onPressed: () async {
-                      print(urlController.text);
-                      print(nameController.text);
-                      print(passwordController.text);
+                  child: ElevatedButton(
+                      //textColor: Colors.white,
+                      //color: Colors.blue,
+                      child: Text(
+                        AppLocalizations.of(context)!.save,
+                        style: new TextStyle(color: Colors.white),
+                      ),
+                      onPressed: () async {
+                        print(urlController.text);
+                        print(nameController.text);
+                        print(passwordController.text);
 
-                      StorageUtil.putString("cc_url", urlController.text);
-                      StorageUtil.putString("cc_username", nameController.text);
-                      StorageUtil.putString("cc_password", passwordController.text);
+                        StorageUtil.putString("cc_url", urlController.text);
+                        StorageUtil.putString("cc_username", nameController.text);
+                        StorageUtil.putString("cc_password", passwordController.text);
 
-                      Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ButtonPressed()));
-                    },
-                  )),
+                        Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => ButtonPressed()));
+                      },
+                      style: ElevatedButton.styleFrom(backgroundColor: Colors.blue))),
               // Dev Button
               /*Container(
                   height: 75,
